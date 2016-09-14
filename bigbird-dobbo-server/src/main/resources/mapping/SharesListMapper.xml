@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigbird.shareslist.dao.SharesListMapper">
+	<!-- <cache type="com.bigbird.shares.cache.MybatisRedisCache" /> -->
+
+	<resultMap id="BaseResultMap" type="com.bigbird.entity.SharesList">
+		<id column="symbol" property="symbol" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="trade" property="trade" jdbcType="VARCHAR" />
+		<result column="pricechange" property="pricechange" jdbcType="VARCHAR" />
+		<result column="changepercent" property="changepercent"
+			jdbcType="VARCHAR" />
+		<result column="buy" property="buy" jdbcType="VARCHAR" />
+		<result column="sell" property="sell" jdbcType="VARCHAR" />
+		<result column="settlement" property="settlement" jdbcType="VARCHAR" />
+		<result column="open" property="open" jdbcType="VARCHAR" />
+		<result column="high" property="high" jdbcType="VARCHAR" />
+		<result column="low" property="low" jdbcType="VARCHAR" />
+		<result column="volume" property="volume" jdbcType="VARCHAR" />
+		<result column="amount" property="amount" jdbcType="VARCHAR" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+		<result column="ticktime" property="ticktime" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		symbol, name, trade, pricechange, changepercent, buy, sell, settlement, open,
+		high,
+		low, volume, amount, code, ticktime
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from shares_list
+		where symbol = #{symbol,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByCode" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from shares_list
+		where code = #{code,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from shares_list
+		where symbol = #{symbol,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.bigbird.entity.SharesList">
+		insert into shares_list (symbol, name, trade,
+		pricechange, changepercent, buy,
+		sell, settlement, open,
+		high, low, volume,
+		amount, code, ticktime
+		)
+		values (#{symbol,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+		#{trade,jdbcType=VARCHAR},
+		#{pricechange,jdbcType=VARCHAR}, #{changepercent,jdbcType=VARCHAR}, #{buy,jdbcType=VARCHAR},
+		#{sell,jdbcType=VARCHAR}, #{settlement,jdbcType=VARCHAR},
+		#{open,jdbcType=VARCHAR},
+		#{high,jdbcType=VARCHAR}, #{low,jdbcType=VARCHAR}, #{volume,jdbcType=VARCHAR},
+		#{amount,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR},
+		#{ticktime,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.bigbird.entity.SharesList">
+		insert into shares_list
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="symbol != null">
+				symbol,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="trade != null">
+				trade,
+			</if>
+			<if test="pricechange != null">
+				pricechange,
+			</if>
+			<if test="changepercent != null">
+				changepercent,
+			</if>
+			<if test="buy != null">
+				buy,
+			</if>
+			<if test="sell != null">
+				sell,
+			</if>
+			<if test="settlement != null">
+				settlement,
+			</if>
+			<if test="open != null">
+				open,
+			</if>
+			<if test="high != null">
+				high,
+			</if>
+			<if test="low != null">
+				low,
+			</if>
+			<if test="volume != null">
+				volume,
+			</if>
+			<if test="amount != null">
+				amount,
+			</if>
+			<if test="code != null">
+				code,
+			</if>
+			<if test="ticktime != null">
+				ticktime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="symbol != null">
+				#{symbol,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="trade != null">
+				#{trade,jdbcType=VARCHAR},
+			</if>
+			<if test="pricechange != null">
+				#{pricechange,jdbcType=VARCHAR},
+			</if>
+			<if test="changepercent != null">
+				#{changepercent,jdbcType=VARCHAR},
+			</if>
+			<if test="buy != null">
+				#{buy,jdbcType=VARCHAR},
+			</if>
+			<if test="sell != null">
+				#{sell,jdbcType=VARCHAR},
+			</if>
+			<if test="settlement != null">
+				#{settlement,jdbcType=VARCHAR},
+			</if>
+			<if test="open != null">
+				#{open,jdbcType=VARCHAR},
+			</if>
+			<if test="high != null">
+				#{high,jdbcType=VARCHAR},
+			</if>
+			<if test="low != null">
+				#{low,jdbcType=VARCHAR},
+			</if>
+			<if test="volume != null">
+				#{volume,jdbcType=VARCHAR},
+			</if>
+			<if test="amount != null">
+				#{amount,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=VARCHAR},
+			</if>
+			<if test="ticktime != null">
+				#{ticktime,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.bigbird.entity.SharesList">
+		update shares_list
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="trade != null">
+				trade = #{trade,jdbcType=VARCHAR},
+			</if>
+			<if test="pricechange != null">
+				pricechange = #{pricechange,jdbcType=VARCHAR},
+			</if>
+			<if test="changepercent != null">
+				changepercent = #{changepercent,jdbcType=VARCHAR},
+			</if>
+			<if test="buy != null">
+				buy = #{buy,jdbcType=VARCHAR},
+			</if>
+			<if test="sell != null">
+				sell = #{sell,jdbcType=VARCHAR},
+			</if>
+			<if test="settlement != null">
+				settlement = #{settlement,jdbcType=VARCHAR},
+			</if>
+			<if test="open != null">
+				open = #{open,jdbcType=VARCHAR},
+			</if>
+			<if test="high != null">
+				high = #{high,jdbcType=VARCHAR},
+			</if>
+			<if test="low != null">
+				low = #{low,jdbcType=VARCHAR},
+			</if>
+			<if test="volume != null">
+				volume = #{volume,jdbcType=VARCHAR},
+			</if>
+			<if test="amount != null">
+				amount = #{amount,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null">
+				code = #{code,jdbcType=VARCHAR},
+			</if>
+			<if test="ticktime != null">
+				ticktime = #{ticktime,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where symbol = #{symbol,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.bigbird.entity.SharesList">
+		update shares_list
+		set name = #{name,jdbcType=VARCHAR},
+		trade = #{trade,jdbcType=VARCHAR},
+		pricechange = #{pricechange,jdbcType=VARCHAR},
+		changepercent = #{changepercent,jdbcType=VARCHAR},
+		buy = #{buy,jdbcType=VARCHAR},
+		sell = #{sell,jdbcType=VARCHAR},
+		settlement = #{settlement,jdbcType=VARCHAR},
+		open = #{open,jdbcType=VARCHAR},
+		high = #{high,jdbcType=VARCHAR},
+		low = #{low,jdbcType=VARCHAR},
+		volume = #{volume,jdbcType=VARCHAR},
+		amount = #{amount,jdbcType=VARCHAR},
+		code = #{code,jdbcType=VARCHAR},
+		ticktime = #{ticktime,jdbcType=VARCHAR}
+		where symbol = #{symbol,jdbcType=VARCHAR}
+	</update>
+</mapper>
