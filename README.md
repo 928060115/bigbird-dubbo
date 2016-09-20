@@ -1,5 +1,5 @@
 # bigbird-dubbo
-dubbo springmvc mybatis 整合
+dubbo springmvc mybatis redis整合
 
 ## 提供者 ##
 
