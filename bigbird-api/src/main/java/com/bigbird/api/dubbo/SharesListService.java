@@ -13,7 +13,7 @@ public interface SharesListService {
 
 	SharesList selectByCode(String code);
 
-	int updateByPrimaryKeySelective(SharesList record);
+	int updateByPrimaryKeySelective(String type, int page);
 
 	int updateByPrimaryKey(SharesList record);
 }

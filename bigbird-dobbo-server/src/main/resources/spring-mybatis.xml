@@ -55,6 +55,13 @@
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
 		<property name="mapperLocations" value="classpath:mapping/*.xml" />
+		<property name="configurationProperties">
+			<props>
+				<prop key="cacheEnabled">true</prop>
+				<prop key="lazyLoadingEnabled">false</prop>
+				<prop key="aggressiveLazyLoading">true</prop>
+			</props>
+		</property>
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -85,11 +92,8 @@
 		</tx:attributes>
 	</tx:advice>
 	<!-- Spring aop事务管理此处配置正确无法发布提供者服务，目前没找到解决方案 -->
-	<!-- <aop:config>
-		<aop:pointcut id="transactionPointcut"
-			expression="execution(* 
-		com.bigbird..service.impl.*Impl.*(..))" />
-		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut" />
-	</aop:config> -->
+	<!-- <aop:config> <aop:pointcut id="transactionPointcut" expression="execution(* 
+		com.bigbird..service.impl.*Impl.*(..))" /> <aop:advisor advice-ref="transactionAdvice" 
+		pointcut-ref="transactionPointcut" /> </aop:config> -->
 
 </beans>  

@@ -27,5 +27,10 @@ public class SharesListContoller {
 		return sharesListService.selectByCode(code);
 	}
 	
+	@RequestMapping(value="/updateByPrimaryKeySelective")
+	@ResponseBody
+	public int updateByPrimaryKeySelective(String type, int page){
+		return sharesListService.updateByPrimaryKeySelective(type, page);
+	}
 	
 }

@@ -17,7 +17,7 @@
 	<dubbo:service interface="com.bigbird.api.dubbo.UserService"
 		ref="userService" />
 		<dubbo:service interface="com.bigbird.api.dubbo.SharesListService"
-		ref="sharesListService" />
+		ref="sharesListService" timeout="1200000" />
 	<!-- 用dubbo协议在20880端口暴露服务 -->
 	<dubbo:protocol name="dubbo" port="20880" />
 	<!-- 官方注释：扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类。 测试发现：此处package不填写包名会无法注册Service，扫描全包需填写包首即可或者填写至类的上一级目录。 -->
